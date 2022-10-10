@@ -30,7 +30,7 @@ function App() {
             placeholder='What needs to be done?' 
             onChange={handleSetTask} 
             onKeyPress={handleSumit} />
-          {listTask.length > 0 && listTask.map((item) => <li><input type="radio" className='button' />{item}</li>)}
+          {listTask.length > 0 && listTask.map((item) => (<li key={item}><input type="radio" className='button' />{item}</li>))}
       </div>
     </div>
   );
