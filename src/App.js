@@ -17,8 +17,8 @@ function App() {
     }
     setListTask(list);
   }
-  // console.log("TASK", task);
-  // console.log('List task', listTask)
+  console.log("TASK", task);
+  console.log('List task', listTask)
 
   return (
     <div className="App">
