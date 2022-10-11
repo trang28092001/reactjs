@@ -1,5 +1,6 @@
 import './App.css';
 import React, { useState } from 'react';
+import { getAllByAltText } from '@testing-library/react';
 
 function App() {
   
@@ -16,7 +17,13 @@ function App() {
       list.push(task);
     }
     setListTask(list);
+    setTask('')
   }
+  
+  let fun = ["All", "Active", "Completed"];
+
+  const myList = fun.map((item) =>(<button key = {item} className='show' >{item}</button>));
+  
   console.log("TASK", task);
   console.log('List task', listTask)
 
@@ -30,7 +37,11 @@ function App() {
             placeholder='What needs to be done?' 
             onChange={handleSetTask} 
             onKeyPress={handleSumit} />
-          {listTask.length > 0 && listTask.map((item) => (<li key={item}><input type="radio" className='button' />{item}</li>))}
+          {listTask.length > 0 && listTask.map((tag) => (<li key = {tag}><input type="radio" className='button' />{tag}</li>))}
+          {listTask.length > 0 && <p className='end'>
+            <span >{listTask.length} item left</span>
+            <span>{myList}</span>
+          </p>}
       </div>
     </div>
   );
