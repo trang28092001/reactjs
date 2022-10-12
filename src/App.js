@@ -1,6 +1,6 @@
 import "./App.css";
 import React, { useState } from "react";
-import { getAllByAltText } from "@testing-library/react";
+
 
 function App() {
   const [task, setTask] = useState();
@@ -24,8 +24,15 @@ function App() {
       list.push(task);
     }
     setListTask(list);
-    setTask();
+    // setTask(" ");
+    
   };
+
+   const toggleChange = () => {
+      setTask({
+      isChecked: !task.status,
+    });
+  }
 
   let fun = ["All", "Active", "Completed"];
 
@@ -37,6 +44,7 @@ function App() {
 
   console.log("TASK", task);
   console.log("List task", listTask);
+
 
   return (
     <div className="App">
@@ -53,8 +61,8 @@ function App() {
         {listTask.length > 0 &&
           listTask.map((task) => (
             <li key={task.id}>
-              <input type="radio" className="button" />
-              {task.taskName}
+               <input type="checkbox" className="button" value={task.taskName} name= "checkBtn" checked = {task.status} onChange= {toggleChange}/>
+              <label>{task.taskName}</label>
             </li>
           ))}
         {listTask.length > 0 && (
