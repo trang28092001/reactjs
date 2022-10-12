@@ -28,16 +28,32 @@ function App() {
     
   };
 
-   const toggleChange = () => {
-      setTask({
-      isChecked: !task.status,
-    });
+   const toggleChange = (id,e) => {
+    let temp = [...listTask];
+      for(var i = 0; i < temp.length; i++){
+        if (temp[i].id === id){
+          temp[i].status = !temp[i].status;
+        }
+      }
+    setListTask(temp);
   }
 
   let fun = ["All", "Active", "Completed"];
-
+  const handleClickBtn = (item, e) =>{
+    console.log(item);
+    let listClick = [...listTask];
+    if(item === "Active"){
+      listClick.filter(i => i.status === false);
+    }else if (item === "Completed") {
+      listClick.filter(i => i.status === true);
+    } 
+    else {
+      listClick.map(i => (i.status === true && i.status === false));
+    }
+    setListTask(listClick);
+  }
   const myList = fun.map((item) => (
-    <button key={item} className="show">
+    <button key={item} className="show" onClick={(e) => handleClickBtn(item,e)}>
       {item}
     </button>
   ));
@@ -61,7 +77,7 @@ function App() {
         {listTask.length > 0 &&
           listTask.map((task) => (
             <li key={task.id}>
-               <input type="checkbox" className="button" value={task.taskName} name= "checkBtn" checked = {task.status} onChange= {toggleChange}/>
+               <input type="checkbox" className="button"  name= "checkBtn" checked = {task.status} onChange= {(e) => toggleChange(task.id, e)}/>
               <label>{task.taskName}</label>
             </li>
           ))}
