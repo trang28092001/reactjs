@@ -24,6 +24,16 @@ function App() {
 
   const myList = fun.map((item) =>(<button key = {item} className='show' >{item}</button>));
   
+  const map = [
+    ...{id: {tag},
+    name: {handleSumit},
+    status: true,}
+  ];
+
+  const mymap = (e) =>{
+    
+  }
+
   console.log("TASK", task);
   console.log('List task', listTask)
 
