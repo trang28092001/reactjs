@@ -43,9 +43,12 @@ function App() {
     console.log(item);
     let listClick = [...listTask];
     if(item === "Active"){
-      listClick.filter(i => i.status === false);
+      listClick.filter(i => i.status === false)
+              .map(filteredList => <li key = {filteredList.id} >{filteredList.taskName}</li> );
+
     }else if (item === "Completed") {
-      listClick.filter(i => i.status === true);
+      listClick.filter(i => i.status === true)
+               .map(filteredList => <li key = {filteredList.id} >{filteredList.taskName}</li> );
     } 
     else {
       listClick.map(i => (i.status === true && i.status === false));
