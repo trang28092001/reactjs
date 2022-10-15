@@ -41,13 +41,9 @@ export function ButtonFilter(props){
     ));
 
     return(
-        <>
-        {listTask.length > 0 && (
-        <p className="end">
-            <span>{listTask.length} item left</span>
-            <span>{myList}</span>
-          </p>
-        )}
-        </>
+      <p className="end">
+        <span>{listTask.length} item left</span>
+        <span>{myList}</span>
+      </p>
     );
 }
