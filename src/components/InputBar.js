@@ -24,6 +24,7 @@ export function InputBar(props) {
           list.push(task);
         }
         props.setListTask(list);
+        list.taskName (" ");
     };
 
     return (
