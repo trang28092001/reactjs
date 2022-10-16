@@ -16,15 +16,6 @@ export function TodoList(props) {
       props.setListTaskTmp(temp);
     }
   };
-  // const listChange = (id, e) => {
-  //   let temp = [...listTask];
-  //   for (var i = 0; i < temp.length; i++) {
-  //     if (temp[i].id === id) {
-  //       if(temp[i].status === true){
-
-  //       }
-  //     }
-  // };
 
   return (
     <>
