@@ -1,11 +1,10 @@
 import "./App.css";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { InputBar } from "./components/InputBar";
 import { TodoList } from "./components/TodoList";
 import { ButtonFilter } from "./components/ButtonFilter";
 
 function App() {
-  //const [task, setTask] = useState();
   const [listTask, setListTask] = useState([]);
   const [titleBtn, setTitleBtn] = useState("All");
 
