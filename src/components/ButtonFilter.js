@@ -6,15 +6,15 @@ export function ButtonFilter(props){
   let titleBtn = props.titleBtn;
 
   useEffect(() => {
-      if (titleBtn === 'All') {
-        setListTaskTmp(listTask)
-      }
+    if (titleBtn === 'All') {
+      setListTaskTmp(listTask)
+    }
   }, [listTask, titleBtn])
     
   let fun = ["All", "Active", "Completed"];
 
   const handleClickBtn = (item, e) => {
-      props.setTitleBtn(item)
+    props.setTitleBtn(item)
   }
     
   useEffect(() => {
