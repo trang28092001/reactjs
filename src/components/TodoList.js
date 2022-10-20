@@ -29,7 +29,7 @@ export function TodoList(props) {
               checked={task.status}
               onChange={(e) => toggleChange(task.id, e)}
             />
-            <label >{task.taskName}</label>
+            <label>{task.taskName}</label>
           </li>
         ))}
     </>

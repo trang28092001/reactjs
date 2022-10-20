@@ -28,7 +28,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1>todos</h1>
+      <h1>Todos</h1>
       <div className="square">
         <InputBar createTodo={createTodo} />
 

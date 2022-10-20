@@ -2,11 +2,11 @@ import React, { useState } from "react";
 
 export function InputBar(props) {
   const [task, setTask] = useState();
-  
+
   const handleChange = (e) => {
     setTask(e.target.value);
   };
-  
+
   const handleSubmit = () => {
     props.createTodo(task);
   };

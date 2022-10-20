@@ -1,43 +1,48 @@
 import React, { useEffect, useState } from "react";
 
-export function ButtonFilter(props){
+export function ButtonFilter(props) {
   const [listTaskTmp, setListTaskTmp] = useState([]);
   let listTask = props.listTask;
   let titleBtn = props.titleBtn;
 
   useEffect(() => {
-      if (titleBtn === 'All') {
-        setListTaskTmp(listTask)
-      }
-  }, [listTask, titleBtn])
-    
+    if (titleBtn === "All") {
+      setListTaskTmp(listTask);
+    }
+  }, [listTask, titleBtn]);
+
   let fun = ["All", "Active", "Completed"];
 
   const handleClickBtn = (item, e) => {
-      props.setTitleBtn(item)
-  }
-    
+    props.setTitleBtn(item);
+  };
+
   useEffect(() => {
     let listClick;
     if (titleBtn === "Active") {
-      listClick = listTaskTmp.filter(i => i.status === false);
-    
+      listClick = listTaskTmp.filter((i) => i.status === false);
     } else if (titleBtn === "Completed") {
-      listClick = listTaskTmp.filter(i => i.status === true);
-    }
-    else {
-      listClick = listTaskTmp.filter(i => (i.status === true || i.status === false));
+      listClick = listTaskTmp.filter((i) => i.status === true);
+    } else {
+      listClick = listTaskTmp.filter(
+        (i) => i.status === true || i.status === false
+      );
     }
     props.setListTask(listClick);
-  }, [titleBtn])
-    
+  }, [titleBtn]);
+
   const myList = fun.map((item) => (
-    <button key={item} className="show" onClick={(e) => handleClickBtn(item, e)}>
+    <button
+      disabled={listTaskTmp.length === 0}
+      key={item}
+      className="show"
+      onClick={(e) => handleClickBtn(item, e)}
+    >
       {item}
     </button>
-    ));
+  ));
 
-  return(
+  return (
     <p className="end">
       <span>{listTask.length} item left</span>
       <span>{myList}</span>
