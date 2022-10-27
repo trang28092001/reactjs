@@ -1,15 +1,13 @@
 import "./App.css";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { InputBar } from "./components/InputBar";
 import { TodoList } from "./components/TodoList";
 import { ButtonFilter } from "./components/ButtonFilter";
 
 function App() {
   const [listTask, setListTask] = useState([]);
+  const [listTaskDisplay, setListTaskDisplay] = useState([]);
   const [titleBtn, setTitleBtn] = useState("All");
-
-  console.log("List task", listTask);
-  console.log("List task tmp", listTask);
 
   const createTodo = (task) => {
     let temp = [...listTask];
@@ -25,6 +23,20 @@ function App() {
     }
   };
 
+  useEffect(() => {
+    let listTaskAfterFilter;
+    if (titleBtn === "Active") {
+      listTaskAfterFilter = listTask.filter((i) => i.status === false);
+    } else if (titleBtn === "Completed") {
+      listTaskAfterFilter = listTask.filter((i) => i.status === true);
+    } else {
+      listTaskAfterFilter = listTask.filter(
+        (i) => i.status === true || i.status === false
+      );
+    }
+    setListTaskDisplay(listTaskAfterFilter);
+  }, [titleBtn, listTask]);
+
   return (
     <div className="App">
       <h1>Todos</h1>
@@ -32,17 +44,14 @@ function App() {
         <InputBar createTodo={createTodo} />
 
         <TodoList
-          titleBtn={titleBtn}
-          setTitleBtn={setTitleBtn}
-          listTask={listTask}
+          listTaskDisplay={listTaskDisplay}
           setListTask={setListTask}
         />
 
         <ButtonFilter
+          numberTask={listTaskDisplay.length}
           titleBtn={titleBtn}
           setTitleBtn={setTitleBtn}
-          listTask={listTask}
-          setListTask={setListTask}
         />
       </div>
     </div>

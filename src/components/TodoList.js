@@ -1,26 +1,22 @@
 import React from "react";
 
 export function TodoList(props) {
-  let listTask = props.listTask;
-  let titleBtn = props.titleBtn;
+  let listTaskDisplay = props.listTaskDisplay;
 
   const toggleChange = (id, e) => {
-    let temp = [...listTask];
+    let temp = [...listTaskDisplay];
     for (var i = 0; i < temp.length; i++) {
       if (temp[i].id === id) {
         temp[i].status = !temp[i].status;
       }
     }
     props.setListTask(temp);
-    if (titleBtn === "All") {
-      props.setListTaskTmp(temp);
-    }
   };
 
   return (
     <>
-      {listTask.length > 0 &&
-        listTask.map((task) => (
+      {listTaskDisplay.length > 0 &&
+        listTaskDisplay.map((task) => (
           <li key={task.id}>
             <input
               type="checkbox"
