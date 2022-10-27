@@ -54,3 +54,8 @@ li{
 span{
   margin: 5% 15% 5% 1%;
 }
+
+.button-active {
+  border-color: rgba(175, 47, 47, 0.2);
+  background: rgba(175, 47, 47, 0.2);
+}
