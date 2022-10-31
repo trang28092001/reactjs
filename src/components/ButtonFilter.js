@@ -1,45 +1,50 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
-export function ButtonFilter(props){
-  const [listTaskTmp, setListTaskTmp] = useState([]);
-  let listTask = props.listTask;
-  let titleBtn = props.titleBtn;
+export function ButtonFilter(props) {
 
-  useEffect(() => {
-    if (titleBtn === 'All') {
-      setListTaskTmp(listTask)
+  let listButtonTitle = [
+    {
+      title: "All",
+      isClicked: true
+    },
+    {
+      title: "Active",
+      isClicked: false
+    },
+    {
+      title: "Completed",
+      isClicked: false
     }
-  }, [listTask, titleBtn])
-    
-  let fun = ["All", "Active", "Completed"];
+  ];
+
+  const [listButtonsState, setListButtonState] = useState(listButtonTitle);
 
   const handleClickBtn = (item, e) => {
-    props.setTitleBtn(item)
-  }
-    
-  useEffect(() => {
-    let listClick;
-    if (titleBtn === "Active") {
-      listClick = listTaskTmp.filter(i => i.status === false);
-    
-    } else if (titleBtn === "Completed") {
-      listClick = listTaskTmp.filter(i => i.status === true);
+    props.setTitleBtn(item.title);
+    let list = [...listButtonsState];
+    for (var i = 0; i < list.length; i++) {
+      if (list[i].title === item.title) {
+        list[i].isClicked = true;
+      } else {
+        list[i].isClicked = false;
+      }
     }
-    else {
-      listClick = listTaskTmp.filter(i => (i.status === true || i.status === false));
-    }
-    props.setListTask(listClick);
-  }, [titleBtn])
-    
-  const myList = fun.map((item) => (
-    <button key={item} className="show" onClick={(e) => handleClickBtn(item, e)}>
-      {item}
-    </button>
-    ));
+    setListButtonState(list)
+  };
 
-  return(
+  const myList = listButtonsState.map((item) => (
+    <button
+      className={item.isClicked ? 'show button-active': 'show'} 
+      key={item.title}
+      onClick={(e) => handleClickBtn(item, e)}
+    >
+      {item.title}
+    </button>
+  ));
+
+  return (
     <p className="end">
-      <span>{listTask.length} item left</span>
+      <span>{props.numberTask} item left</span>
       <span>{myList}</span>
     </p>
   );

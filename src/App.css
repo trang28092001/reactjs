@@ -12,7 +12,7 @@ h1 {
 .square{
   height: 50%;
   width: 50%;
-  margin: 5% 25%;
+  margin: 0% 25%;
   
 }
 #write{
@@ -22,7 +22,7 @@ h1 {
   font-size: 40px;
   padding-left: 9%;
   font-family: 'Edu VIC WA NT Beginner', cursive;
-  box-shadow: 10px -10px rgb(74, 70, 70);
+  box-shadow: 10px -10px rgb(191 188 188);
 }
 li{
   height: 100%;
@@ -32,7 +32,7 @@ li{
   list-style-type: none;
   font-size: 40px;
   word-break: break-all;
-  box-shadow: 10px 0px rgb(74, 70, 70);
+  box-shadow: 10px 0px rgb(191 188 188);
 }
 .button{
   width: 30px;
@@ -45,7 +45,7 @@ li{
   margin: 0 5%;
   border: 1px solid black;
   font-family: 'Edu VIC WA NT Beginner', cursive;
-  box-shadow: 10px 0px rgb(74, 70, 70);
+  box-shadow: 10px 0px rgb(191 188 188);
   
 }
 .show{
@@ -53,4 +53,9 @@ li{
 }
 span{
   margin: 5% 15% 5% 1%;
+}
+
+.button-active {
+  border-color: rgba(175, 47, 47, 0.2);
+  background: rgba(175, 47, 47, 0.2);
 }
